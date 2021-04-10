@@ -1,0 +1,16 @@
+version: "3.0"
+
+services:
+  cordova:
+    build:
+      context: .
+      args:
+        ANDROID_BUILD_TOOLS_VERSION: 29.0.2
+        ANDROID_APIS: android-29
+        CORDOVA_VERSION: 9.0.0
+    container_name: cordova
+    volumes:
+      - ./build:/tmp/${APP_NAME}
+    command: tail -F anything
+    ports:
+      - 8000:8000
