@@ -17,12 +17,12 @@ ENV ANT_HOME="/usr/share/ant" \
     ANDROID_SDK_ROOT="/opt/android" \
     ANDROID_HOME="/opt/android"
 
-ENV PATH $PATH:$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$ANDROID_SDK_ROOT/build-tools/$ANDROID_BUILD_TOOLS_VERSION:$ANT_HOME/bin:$MAVEN_HOME/bin:$GRADLE_HOME/bin
+ENV PATH $PATH:$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$ANDROID_SDK_ROOT/build-tools/$ANDROID_BUILD_TOOLS_VERSION:$ANT_HOME/bin:$MAVEN_HOME/bin:$GRADLE_HOME/gradle-6.1.1/bin
 
 WORKDIR /opt
 RUN dpkg --add-architecture i386 && \
     apt-get -qq update && \
-    apt-get -qq install -y wget curl maven ant gradle libncurses5:i386 libstdc++6:i386 zlib1g:i386 && \
+    apt-get -qq install -y wget curl maven ant unzip libncurses5:i386 libstdc++6:i386 zlib1g:i386 && \
     # Installs Android SDK
     mkdir android && cd android && \
     wget -O tools.zip ${ANDROID_SDK_URL} && \
@@ -34,6 +34,12 @@ RUN dpkg --add-architecture i386 && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     apt-get autoremove -y && \
     apt-get clean
+
+# Installing a specific Gradle vesion
+RUN wget https://services.gradle.org/distributions/gradle-6.1.1-bin.zip -P /tmp &&\
+    unzip -d ${GRADLE_HOME} /tmp/gradle-6.1.1-bin.zip && \
+    rm /tmp/gradle-6.1.1-bin.zip
+
 
 # Installing sdkmanager to accept licenses
 RUN \
