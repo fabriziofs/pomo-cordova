@@ -20,6 +20,8 @@ Primero iniciamos una terminal interactiva dentro del contenedor.
 docker-compose exec cordova bash
 ```
 
+#### Dentro del contenedor
+
 Cambimos permisos del directorio de nuestro proyecto.
 
 ```
@@ -58,7 +60,28 @@ cordova build android
 
 ## Si vamos a trabajar con el proyecto de este repositorio
 
-Instalar las dependencias de node
+Clonamos este repositorio, por ejemplo con SSH
+
+```
+git clone git@github.com:Fabriziofs/pomo-cordova.git
+```
+
+Generamos la imágen y levantamos los contenedores a la vez
+
+```
+cd pomo-cordova/
+docker-compose up -d
+```
+
+Iniciamos una terminal interactiva dentro del contenedor.
+
+```
+docker-compose exec cordova bash
+```
+
+#### Dentro del contenedor
+
+instalamos las dependencias de node
 
 ```
 cd /tmp/MyApp
