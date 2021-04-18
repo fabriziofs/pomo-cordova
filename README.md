@@ -87,3 +87,9 @@ instalamos las dependencias de node
 cd /tmp/MyApp
 npm install
 ```
+
+Instalamos las plataformas que vamos a usar
+
+```
+cordova platform add browser android
+```
