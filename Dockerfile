@@ -1,5 +1,19 @@
 FROM beevelop/java
 
+# Creating a new user
+ARG USER=docker
+ARG UID=1000
+ARG GID=1000
+ARG PW=docker
+
+# Getting this from compose file
+ARG APP_NAME
+
+RUN apt-get update && \
+    apt-get -y install sudo
+RUN useradd -m ${USER} --uid=${UID} && echo "${USER}:${PW}" | \
+    chpasswd && adduser ${USER} sudo
+
 # Android requirements versions
 ARG ANDROID_BUILD_TOOLS_VERSION=29.0.2
 ARG ANDROID_APIS="android-28,android-29" 
@@ -60,4 +74,3 @@ RUN apt-get update && apt-get install -y curl git ca-certificates --no-install-r
 # Installing Apache Cordova
 WORKDIR "/tmp"
 RUN npm i -g --unsafe-perm cordova@${CORDOVA_VERSION}
-
