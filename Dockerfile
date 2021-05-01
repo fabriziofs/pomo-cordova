@@ -8,6 +8,10 @@ ARG PW=docker
 
 # Getting this from compose file
 ARG APP_NAME
+ARG GRADLE_VERSION
+ARG ANDROID_BUILD_TOOLS_VERSION
+ARG ANDROID_APIS 
+ARG CORDOVA_VERSION
 
 RUN apt-get update && \
     apt-get -y install sudo
@@ -15,13 +19,10 @@ RUN useradd -m ${USER} --uid=${UID} && echo "${USER}:${PW}" | \
     chpasswd && adduser ${USER} sudo
 
 # Android requirements versions
-ARG ANDROID_BUILD_TOOLS_VERSION=29.0.2
-ARG ANDROID_APIS="android-28,android-29" 
 ARG ANDROID_SDK_URL="https://dl.google.com/android/repository/tools_r25.2.5-linux.zip"
 ARG ANDROID_CMDTOOLS_URL="https://dl.google.com/android/repository/commandlinetools-linux-6858069_latest.zip"
 
 # Cordova version and nodejs version
-ARG CORDOVA_VERSION=9.0.0
 ARG NODEJS_VERSION=10.16.3
 
 # Enviroment variables to build apks
@@ -31,7 +32,7 @@ ENV ANT_HOME="/usr/share/ant" \
     ANDROID_SDK_ROOT="/opt/android" \
     ANDROID_HOME="/opt/android"
 
-ENV PATH $PATH:$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$ANDROID_SDK_ROOT/build-tools/$ANDROID_BUILD_TOOLS_VERSION:$ANT_HOME/bin:$MAVEN_HOME/bin:$GRADLE_HOME/gradle-6.1.1/bin
+ENV PATH $PATH:$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$ANDROID_SDK_ROOT/build-tools/$ANDROID_BUILD_TOOLS_VERSION:$ANT_HOME/bin:$MAVEN_HOME/bin:$GRADLE_HOME/gradle-${GRADLE_VERSION}/bin
 
 WORKDIR /opt
 RUN dpkg --add-architecture i386 && \
@@ -50,9 +51,9 @@ RUN dpkg --add-architecture i386 && \
     apt-get clean
 
 # Installing a specific Gradle vesion
-RUN wget https://services.gradle.org/distributions/gradle-6.1.1-bin.zip -P /tmp &&\
-    unzip -d ${GRADLE_HOME} /tmp/gradle-6.1.1-bin.zip && \
-    rm /tmp/gradle-6.1.1-bin.zip
+RUN wget https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip -P /tmp &&\
+    unzip -d ${GRADLE_HOME} /tmp/gradle-${GRADLE_VERSION}-bin.zip && \
+    rm /tmp/gradle-${GRADLE_VERSION}-bin.zip
 
 
 # Installing sdkmanager to accept licenses
