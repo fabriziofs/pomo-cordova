@@ -41,7 +41,7 @@ Añadimos las plataformas que vamos a usar.
 ```
 cd /tmp/MyApp
 cordova platform add browser
-cordova platform add android
+cordova platform add android@9.0.0
 ```
 
 Ejecutamos la aplicación en el navegador.
@@ -91,5 +91,5 @@ npm install
 Instalamos las plataformas que vamos a usar
 
 ```
-cordova platform add browser android
+cordova platform add browser android@9.0.0
 ```
