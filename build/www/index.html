@@ -1,31 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
   <head>
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="msapplication-tap-highlight" content="no" />
-    <meta
-      name="viewport"
-      content="initial-scale=1, width=device-width, viewport-fit=cover"
-    />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
-
-    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/index.css" />
     <title>PomoCordova</title>
   </head>
   <body>
     <header class="header">
-      <img class="btn menu-btn" src="./assets/menu-btn.svg" />
-      <h1 class="title">PomoCordova</h1>
-      <img class="btn mute-btn" src="./assets/mute-btn.svg" />
+        <h1 class="logo">
+          <img class="logo__icon" src="assets/tomato.svg" alt="Tomato icon">
+          <span class="logo__text">Pomocordova</span>
+        </h1>
+      <nav class="navbar">
+        <button class="navbar__button"><img src="./assets/settings.svg" alt="ajustes"></button>
+        <button class="navbar__button"><img src="assets/speaker-on.svg" alt=""></button>
+      </nav>
     </header>
-    <main>
-      <div class="pomo-clock"></div>
-      <div class="pomo-state"></div>
-      <div class="pomo-start-btn"></div>
-    </main>
   </body>
 </html>
