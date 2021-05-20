@@ -1,63 +1,106 @@
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 :root {
-  --tomato: #F95959;
-  --white: #FFFFFF;
+    --tomato: #F95959;
+    --white: #FFFFFF;
 }
 
 html {
-  font-size: 62.5%;
+    font-size: 62.5%;
 }
 
 body {
-  width: 100vw;
-  height: 100vh;
-  background-color: var(--tomato);
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--tomato);
 }
 
 .header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 5%;
 }
 
 .logo {
-  display: flex;
-  align-items: center;
-  gap: .2rem;
+    display: flex;
+    align-items: center;
+    gap: .2rem;
 }
 
 .logo__icon {
-  width: 1.6rem;
+    width: 1.6rem;
 }
 
 .logo__text {
-  font: 500 1.6rem 'Inter', sans-serif;
-  text-transform: capitalize;
-  text-align: center;
-  color: var(--white);
-  text-decoration: none;
+    font: 500 1.6rem 'Inter', sans-serif;
+    text-transform: capitalize;
+    text-align: center;
+    color: var(--white);
+    text-decoration: none;
 }
 
 .navbar {
-  display: flex;
-  gap: .5rem;
+    display: flex;
+    gap: .5rem;
 }
 
 .navbar__button {
-  display: flex;
-  align-items: center;
-  border: solid black .1rem;
-  padding: .5rem;
-  border-radius: .5rem;
-  background: rgba(255, 255, 255, .2);
+    display: flex;
+    align-items: center;
+    border: solid black .1rem;
+    padding: .5rem;
+    border-radius: .5rem;
+    background: rgba(255, 255, 255, .2);
 }
 
 .navbar__button img {
-  width: 1.8rem;
+    width: 1.8rem;
+}
+
+.countdown-wrapper {
+    margin: 5%;
+    padding: 5%;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.countdown-menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.countdown-menu__selector {
+    background: transparent;
+    box-shadow: 0 0 0 transparent;
+    border: 0 solid transparent;
+    text-shadow: 0 0 0 transparent;
+    color: white;
+}
+
+.countdown__number {
+    font: 500 10rem 'Inter', sans-serif;
+    display: flex;
+    justify-content: center;
+}
+
+.countdown-controller {
+    display: flex;
+    justify-content: center;
+}
+
+.countdown-controller__button {
+    padding: 5%;
+    border: none;
+    border-radius: 5px;
+    color: var(--tomato);
+    text-transform: uppercase;
+    font-size: 2.2rem;
+    font-weight: bold;
 }

@@ -1,24 +1,37 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/index.css" />
+    <link rel="stylesheet" href="./css/index.css"/>
     <title>PomoCordova</title>
-  </head>
-  <body>
-    <header class="header">
-        <h1 class="logo">
-          <img class="logo__icon" src="assets/tomato.svg" alt="Tomato icon">
-          <span class="logo__text">Pomocordova</span>
-        </h1>
-      <nav class="navbar">
+</head>
+<body>
+<header class="header">
+    <h1 class="logo">
+        <img class="logo__icon" src="assets/tomato.svg" alt="Tomato icon">
+        <span class="logo__text">Pomocordova</span>
+    </h1>
+    <nav class="navbar">
         <button class="navbar__button"><img src="./assets/settings.svg" alt="ajustes"></button>
         <button class="navbar__button"><img src="assets/speaker-on.svg" alt=""></button>
-      </nav>
-    </header>
-  </body>
+    </nav>
+</header>
+<main class="countdown-wrapper">
+    <div class="countdown">
+        <div class="countdown-menu">
+            <button class="countdown-menu__selector">Pomodoro</button>
+            <button class="countdown-menu__selector">Pausa Corta</button>
+            <button class="countdown-menu__selector">Pausa Larga</button>
+        </div>
+        <div class="countdown__number">00:00</div>
+        <div class="countdown-controller">
+            <button class="countdown-controller__button">Comenzar</button>
+        </div>
+    </div>
+</main>
+</body>
 </html>
