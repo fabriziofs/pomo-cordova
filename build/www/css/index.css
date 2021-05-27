@@ -65,7 +65,7 @@ body {
 }
 
 .line-separator {
-    margin-bottom: 4rem;
+    margin-block-end: 4rem;
     height: .1rem;
     background-color: rgba(0, 0, 0, 0.1);
 }
@@ -84,7 +84,8 @@ body {
 }
 
 .countdown-menu__selector {
-padding: 0 1.2rem;
+    padding-block: 0;
+    padding-inline: 1.2rem;
     font: 500 1.6rem var(--font);
     background: transparent;
     border: 0 solid transparent;
@@ -97,7 +98,8 @@ padding: 0 1.2rem;
 }
 
 .countdown-controller {
-    margin: 5% 0;
+    margin-block: 5%;
+    margin-inline: 0;
     display: flex;
     justify-content: center;
 }
