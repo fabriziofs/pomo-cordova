@@ -25,15 +25,16 @@
 <main class="countdown-wrapper">
     <div class="countdown">
         <div class="countdown-menu">
-            <button class="countdown-menu__selector">Pomodoro</button>
-            <button class="countdown-menu__selector">Pausa Corta</button>
-            <button class="countdown-menu__selector">Pausa Larga</button>
+            <button class="countdown-menu__selector" id="option-pomodoro">Pomodoro</button>
+            <button class="countdown-menu__selector" id="option-short-break">Pausa Corta</button>
+            <button class="countdown-menu__selector" id="option-long-break">Pausa Larga</button>
         </div>
-        <div class="countdown__number">00:00</div>
+        <div class="countdown__number" id="countdown_number">00:00</div>
         <div class="countdown-controller">
-            <button class="countdown-controller__button">Comenzar</button>
+            <button class="countdown-controller__button" id="countdown_button">Comenzar</button>
         </div>
     </div>
 </main>
+<script src="./js/index.js"></script>
 </body>
 </html>
