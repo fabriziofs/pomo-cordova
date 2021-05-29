@@ -1,6 +1,8 @@
 let interval;
 let countdown_button = document.getElementById('countdown_button');
 let countdown_number = document.getElementById('countdown_number');
+let pomo_minutes = 1;
+let pomo_seconds = 60;
 let app = {
     // Application Constructor
     initialize: function () {
@@ -25,13 +27,13 @@ let app = {
         }
     },
     startCountdown: function () {
-        // Iniciamos los valores del contador
-        let pomo_minutes = 1;
-        let pomo_seconds = 60;
         countdown_button.classList.add('started');
         countdown_button.innerHTML = 'Detener';
+
         // Restamos 1 a los minutos para que empiecen donde tocan
-        pomo_minutes -= 1;
+        if (parseInt(pomo_minutes) > 0) {
+            pomo_minutes -= 1;
+        }
 
         function counter() {
             // Si los segundos son 0, restamos un minuto y hacemos que
