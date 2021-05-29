@@ -94,7 +94,7 @@ body {
 
 .countdown__number {
     text-align: center;
-    font: 500 8.5rem var(--font);
+    font: 500 7.5rem var(--font);
 }
 
 .countdown-controller {
