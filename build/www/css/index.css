@@ -15,7 +15,7 @@ html {
     color: var(--white);
 }
 
-body {
+.app-wrapper {
     width: 100%;
     height: 100vh;
     background-color: var(--tomato);
@@ -132,4 +132,16 @@ body {
 .option--selected {
     background: none rgba(0, 0, 0, .15);
     border-radius: .5rem;
+}
+
+.pomodoro--bg {
+    background: var(--tomato);
+}
+
+.short-break--bg {
+    background: blue;
+}
+
+.long-break--bg {
+    background: blueviolet;
 }

@@ -3,6 +3,7 @@ let countdown_button = document.getElementById('countdown_button');
 let forward_button = document.getElementById('forward_button');
 let countdown_number = document.getElementById('countdown_number');
 let countdown_menu = document.getElementById('countdown_menu');
+let app_wrapper = document.getElementById('app_wrapper');
 
 let pomo_minutes = 1;
 let pomo_seconds = 60;
@@ -45,17 +46,12 @@ let app = {
         }
 
 
-        // Restamos 1 a los minutos para que empiecen donde tocan
-        // si los minutos son mayores a 0, sino, restamos segundos.
         if (parseInt(pomo_minutes) > 0) {
             pomo_minutes -= 1;
         }
 
         function counter() {
-            // Si los segundos son 0, restamos un minuto y hacemos que
-            // los segundos vuelvan a ser 60
             if (parseInt(pomo_seconds) === 0) {
-                // Si los minutos son 0 acabamos el contador
                 if (parseInt(pomo_minutes) === 0) {
                     clearInterval(interval);
                     return;
@@ -63,11 +59,8 @@ let app = {
                 pomo_minutes -= 1;
                 pomo_seconds = 60;
             }
-            // Esto se ejecuta si ninguna de las 2 situaciones anteriores sucede
             pomo_seconds -= 1;
-            pomo_minutes = pomo_minutes.toLocaleString(undefined, {minimumIntegerDigits: 2, useGrouping: false});
-            pomo_seconds = pomo_seconds.toLocaleString(undefined, {minimumIntegerDigits: 2, useGrouping: false});
-            countdown_number.innerHTML = `${pomo_minutes}:${pomo_seconds}`;
+            app.printCountdownNumbers(pomo_minutes, pomo_seconds);
         }
 
         interval = setInterval(counter, 1000);
@@ -87,19 +80,49 @@ let app = {
         countdown_button.classList.remove('paused');
         pomo_minutes = 0;
         pomo_seconds = 0;
-        pomo_minutes = pomo_minutes.toLocaleString(undefined, {minimumIntegerDigits: 2, useGrouping: false});
-        pomo_seconds = pomo_seconds.toLocaleString(undefined, {minimumIntegerDigits: 2, useGrouping: false});
-        countdown_number.innerHTML = `${pomo_minutes}:${pomo_seconds}`;
+
+        this.printCountdownNumbers(pomo_minutes, pomo_seconds);
         countdown_button.innerHTML = 'Comenzar';
     },
 
     selectSessionOption: function (option_id) {
         let options = countdown_menu.getElementsByTagName('button');
+        this.changeBackground(option_id);
         for (let option of options) {
             option.classList.remove('option--selected');
         }
         let option_selected = document.getElementById(option_id);
         option_selected.classList.add('option--selected');
+    },
+
+    changeBackground: function (option_id) {
+        switch (option_id) {
+            case 'option_pomodoro':
+                app_wrapper.className = 'app-wrapper pomodoro--bg';
+                pomo_minutes = 25;
+                pomo_seconds = 0;
+                this.printCountdownNumbers(pomo_minutes, pomo_seconds);
+                break;
+
+            case 'option_short-break':
+                app_wrapper.className = 'app-wrapper short-break--bg';
+                pomo_minutes = 5;
+                pomo_seconds = 0;
+                this.printCountdownNumbers(pomo_minutes, pomo_seconds);
+                break;
+
+            case 'option_long-break':
+                app_wrapper.className = 'app-wrapper long-break--bg';
+                pomo_minutes = 10;
+                pomo_seconds = 0;
+                this.printCountdownNumbers(pomo_minutes, pomo_seconds);
+                break;
+        }
+    },
+    printCountdownNumbers: function (pomo_minutes, pomo_seconds) {
+        pomo_minutes = parseInt(pomo_minutes).toLocaleString(undefined, {minimumIntegerDigits: 2, useGrouping: false});
+        pomo_seconds = parseInt(pomo_seconds).toLocaleString(undefined, {minimumIntegerDigits: 2, useGrouping: false});
+        countdown_number.innerHTML = `${pomo_minutes}:${pomo_seconds}`;
     }
 };
 
