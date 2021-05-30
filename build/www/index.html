@@ -24,10 +24,10 @@
 <div class="line-separator"></div>
 <main class="countdown-wrapper">
     <div class="countdown">
-        <div class="countdown-menu">
-            <button class="countdown-menu__selector" id="option-pomodoro">Pomodoro</button>
-            <button class="countdown-menu__selector" id="option-short-break">Pausa Corta</button>
-            <button class="countdown-menu__selector" id="option-long-break">Pausa Larga</button>
+        <div class="countdown-menu" id="countdown_menu">
+            <button class="countdown-menu__selector" id="option_pomodoro" onclick="app.selectSessionOption(this.id)">Pomodoro</button>
+            <button class="countdown-menu__selector" id="option_short-break" onclick="app.selectSessionOption(this.id)">Pausa Corta</button>
+            <button class="countdown-menu__selector" id="option_long-break" onclick="app.selectSessionOption(this.id)">Pausa Larga</button>
         </div>
         <div class="countdown__number" id="countdown_number">00:00</div>
         <div class="countdown-controller">

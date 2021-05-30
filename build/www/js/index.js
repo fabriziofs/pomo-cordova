@@ -2,6 +2,8 @@ let interval;
 let countdown_button = document.getElementById('countdown_button');
 let forward_button = document.getElementById('forward_button');
 let countdown_number = document.getElementById('countdown_number');
+let countdown_menu = document.getElementById('countdown_menu');
+
 let pomo_minutes = 1;
 let pomo_seconds = 60;
 let app = {
@@ -21,6 +23,7 @@ let app = {
         countdown_button.addEventListener('click', this.checkCountdown.bind(this));
         forward_button.addEventListener('click', this.stopCountdown.bind(this));
     },
+
     checkCountdown: function () {
         if (countdown_button.classList.contains('started')) {
             this.pauseCountdown();
@@ -76,7 +79,6 @@ let app = {
         countdown_button.classList.add('paused');
         forward_button.classList.add('hidden');
     },
-
     stopCountdown: function () {
         clearInterval(interval);
         forward_button.classList.add('hidden');
@@ -89,8 +91,16 @@ let app = {
         pomo_seconds = pomo_seconds.toLocaleString(undefined, {minimumIntegerDigits: 2, useGrouping: false});
         countdown_number.innerHTML = `${pomo_minutes}:${pomo_seconds}`;
         countdown_button.innerHTML = 'Comenzar';
+    },
+
+    selectSessionOption: function (option_id) {
+        let options = countdown_menu.getElementsByTagName('button');
+        for (let option of options) {
+            option.classList.remove('option--selected');
+        }
+        let option_selected = document.getElementById(option_id);
+        option_selected.classList.add('option--selected');
     }
 };
 
 app.initialize();
-
