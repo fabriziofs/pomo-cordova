@@ -1,5 +1,6 @@
 let interval;
 let countdown_button = document.getElementById('countdown_button');
+let forward_button = document.getElementById('forward_button');
 let countdown_number = document.getElementById('countdown_number');
 let pomo_minutes = 1;
 let pomo_seconds = 60;
@@ -18,6 +19,7 @@ let app = {
 
     receivedEvent: function (id) {
         countdown_button.addEventListener('click', this.checkCountdown.bind(this));
+        forward_button.addEventListener('click', this.stopCountdown.bind(this));
     },
     checkCountdown: function () {
         if (countdown_button.classList.contains('started')) {
@@ -28,9 +30,20 @@ let app = {
     },
     startCountdown: function () {
         countdown_button.classList.add('started');
+        forward_button.classList.remove('hidden');
         countdown_button.innerHTML = 'Detener';
 
+        if (countdown_button.classList.contains('paused')) {
+            countdown_button.classList.remove('paused');
+        }
+        if (countdown_button.classList.contains('stopped')) {
+            pomo_minutes = 1;
+            pomo_seconds = 60;
+        }
+
+
         // Restamos 1 a los minutos para que empiecen donde tocan
+        // si los minutos son mayores a 0, sino, restamos segundos.
         if (parseInt(pomo_minutes) > 0) {
             pomo_minutes -= 1;
         }
@@ -61,6 +74,21 @@ let app = {
         countdown_button.innerHTML = 'Reanudar';
         countdown_button.classList.remove('started');
         countdown_button.classList.add('paused');
+        forward_button.classList.add('hidden');
+    },
+
+    stopCountdown: function () {
+        clearInterval(interval);
+        forward_button.classList.add('hidden');
+        countdown_button.classList.add('stopped');
+        countdown_button.classList.remove('started');
+        countdown_button.classList.remove('paused');
+        pomo_minutes = 0;
+        pomo_seconds = 0;
+        pomo_minutes = pomo_minutes.toLocaleString(undefined, {minimumIntegerDigits: 2, useGrouping: false});
+        pomo_seconds = pomo_seconds.toLocaleString(undefined, {minimumIntegerDigits: 2, useGrouping: false});
+        countdown_number.innerHTML = `${pomo_minutes}:${pomo_seconds}`;
+        countdown_button.innerHTML = 'Comenzar';
     }
 };
 

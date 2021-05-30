@@ -105,11 +105,26 @@ body {
 }
 
 .countdown-controller__button {
-    padding: 5%;
+    max-width: 20rem;
+    padding: 1em;
     border: none;
     border-radius: 5px;
     color: var(--tomato);
     text-transform: uppercase;
     font-size: 2.2rem;
     font-weight: bold;
+}
+
+.countdown-controller__forward {
+    max-width: 19rem;
+    background: transparent;
+    border: none;
+}
+
+.countdown-controller__forward-img {
+    width: min(30%, 4.8rem);
+}
+
+.hidden {
+    display: none;
 }
