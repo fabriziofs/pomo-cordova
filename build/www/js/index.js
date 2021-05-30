@@ -6,20 +6,16 @@ let countdown_menu = document.getElementById('countdown_menu');
 let app_wrapper = document.getElementById('app_wrapper');
 
 let pomo_minutes = 1;
-let pomo_seconds = 60;
+let pomo_seconds = 0;
 let app = {
     // Application Constructor
     initialize: function () {
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
         this.onDeviceReady();
     },
-    // deviceready Event Handler
-    // Bind any cordova events here. Common events are:
-    // 'pause', 'resume', etc.
     onDeviceReady: function () {
         this.receivedEvent('deviceready');
     },
-
     receivedEvent: function (id) {
         countdown_button.addEventListener('click', this.checkCountdown.bind(this));
         forward_button.addEventListener('click', this.stopCountdown.bind(this));
@@ -33,6 +29,11 @@ let app = {
         }
     },
     startCountdown: function () {
+        if (countdown_button.classList.contains('stopped')) {
+            this.clearCountdown();
+            pomo_minutes = 1;
+            pomo_seconds = 0;
+        }
         countdown_button.classList.add('started');
         forward_button.classList.remove('hidden');
         countdown_button.innerHTML = 'Detener';
@@ -40,20 +41,12 @@ let app = {
         if (countdown_button.classList.contains('paused')) {
             countdown_button.classList.remove('paused');
         }
-        if (countdown_button.classList.contains('stopped')) {
-            pomo_minutes = 1;
-            pomo_seconds = 60;
-        }
 
-
-        if (parseInt(pomo_minutes) > 0) {
-            pomo_minutes -= 1;
-        }
 
         function counter() {
             if (parseInt(pomo_seconds) === 0) {
                 if (parseInt(pomo_minutes) === 0) {
-                    clearInterval(interval);
+                    app.clearCountdown();
                     return;
                 }
                 pomo_minutes -= 1;
@@ -66,18 +59,13 @@ let app = {
         interval = setInterval(counter, 1000);
     },
     pauseCountdown: function () {
-        clearInterval(interval);
-        countdown_button.innerHTML = 'Reanudar';
-        countdown_button.classList.remove('started');
+        this.clearCountdown();
         countdown_button.classList.add('paused');
-        forward_button.classList.add('hidden');
+        countdown_button.innerHTML = 'Reanudar';
     },
     stopCountdown: function () {
-        clearInterval(interval);
-        forward_button.classList.add('hidden');
+        this.clearCountdown();
         countdown_button.classList.add('stopped');
-        countdown_button.classList.remove('started');
-        countdown_button.classList.remove('paused');
         pomo_minutes = 0;
         pomo_seconds = 0;
 
@@ -98,6 +86,7 @@ let app = {
     changeBackground: function (option_id) {
         switch (option_id) {
             case 'option_pomodoro':
+                this.clearCountdown();
                 app_wrapper.className = 'app-wrapper pomodoro--bg';
                 pomo_minutes = 25;
                 pomo_seconds = 0;
@@ -105,6 +94,7 @@ let app = {
                 break;
 
             case 'option_short-break':
+                this.clearCountdown();
                 app_wrapper.className = 'app-wrapper short-break--bg';
                 pomo_minutes = 5;
                 pomo_seconds = 0;
@@ -112,6 +102,7 @@ let app = {
                 break;
 
             case 'option_long-break':
+                this.clearCountdown();
                 app_wrapper.className = 'app-wrapper long-break--bg';
                 pomo_minutes = 10;
                 pomo_seconds = 0;
@@ -123,6 +114,13 @@ let app = {
         pomo_minutes = parseInt(pomo_minutes).toLocaleString(undefined, {minimumIntegerDigits: 2, useGrouping: false});
         pomo_seconds = parseInt(pomo_seconds).toLocaleString(undefined, {minimumIntegerDigits: 2, useGrouping: false});
         countdown_number.innerHTML = `${pomo_minutes}:${pomo_seconds}`;
+    },
+    clearCountdown: function() {
+        clearInterval(interval);
+        countdown_button.className = 'countdown-controller__button';
+        forward_button.classList.add('hidden');
+        countdown_button.innerHTML = 'Comenzar';
+
     }
 };
 
