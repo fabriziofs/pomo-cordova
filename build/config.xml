@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.pomocordova" version="1.0.0">
+<widget id="com.fabrizio" version="1.0.0">
     <name short="PomoCdv">PomoCordova</name>
     <description>
         A multiplatform pomodoro application powered by Apache Cordova

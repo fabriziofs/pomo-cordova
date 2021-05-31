@@ -11,12 +11,14 @@ let app = {
     // Application Constructor
     initialize: function () {
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
+
+        // Descomentar para probar la app directamente en el navegador
         this.onDeviceReady();
     },
     onDeviceReady: function () {
-        this.receivedEvent('deviceready');
+        this.receivedEvent();
     },
-    receivedEvent: function (id) {
+    receivedEvent: function () {
         countdown_button.addEventListener('click', this.checkCountdown.bind(this));
         forward_button.addEventListener('click', this.stopCountdown.bind(this));
     },
