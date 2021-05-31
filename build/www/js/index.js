@@ -87,7 +87,7 @@ let app = {
         switch (option_id) {
             case 'option_pomodoro':
                 this.clearCountdown();
-                app_wrapper.className = 'app-wrapper pomodoro--bg';
+                this.changeAppColor('--pomo-color');
                 pomo_minutes = 25;
                 pomo_seconds = 0;
                 this.printCountdownNumbers(pomo_minutes, pomo_seconds);
@@ -95,7 +95,7 @@ let app = {
 
             case 'option_short-break':
                 this.clearCountdown();
-                app_wrapper.className = 'app-wrapper short-break--bg';
+                this.changeAppColor('--short-break-color');
                 pomo_minutes = 5;
                 pomo_seconds = 0;
                 this.printCountdownNumbers(pomo_minutes, pomo_seconds);
@@ -103,7 +103,7 @@ let app = {
 
             case 'option_long-break':
                 this.clearCountdown();
-                app_wrapper.className = 'app-wrapper long-break--bg';
+                this.changeAppColor('--long-break-color');
                 pomo_minutes = 10;
                 pomo_seconds = 0;
                 this.printCountdownNumbers(pomo_minutes, pomo_seconds);
@@ -120,7 +120,11 @@ let app = {
         countdown_button.className = 'countdown-controller__button';
         forward_button.classList.add('hidden');
         countdown_button.innerHTML = 'Comenzar';
-
+    },
+    changeAppColor: function(css_variable) {
+        let main_color = getComputedStyle(document.documentElement).getPropertyValue(css_variable);
+        app_wrapper.style.setProperty( 'background-color', main_color);
+        countdown_button.style.setProperty('color', main_color);
     }
 };
 

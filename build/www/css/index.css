@@ -8,6 +8,9 @@
     --font: 'M PLUS Rounded 1c', sans-serif;
     --tomato: #F95959;
     --white: #FFFFFF;
+    --pomo-color: #2980B9;
+    --short-break-color: #F95959;
+    --long-break-color: #BDC3C7;
 }
 
 html {
@@ -18,7 +21,11 @@ html {
 .app-wrapper {
     width: 100%;
     height: 100vh;
-    background-color: var(--tomato);
+    background-color: var(--pomo-color);
+    -webkit-transition: background-color 1s ease-out;
+    -moz-transition: background-color 1s ease-out;
+    -o-transition: background-color 1s ease-out;
+    transition: background-color 1s ease-out;
 }
 
 .header {
@@ -109,10 +116,14 @@ html {
     padding: 1em;
     border: none;
     border-radius: 5px;
-    color: var(--tomato);
+    color: var(--pomo-color);
     text-transform: uppercase;
     font-size: 2.2rem;
     font-weight: bold;
+    -webkit-transition: color 1s ease-out;
+    -moz-transition: color 1s ease-out;
+    -o-transition: color 1s ease-out;
+    transition: color 1s ease-out;
 }
 
 .countdown-controller__forward {
@@ -125,6 +136,8 @@ html {
     width: min(30%, 4.8rem);
 }
 
+/* ESTILOS AUXILIARES PARA CAMBIOS DE ESTADO */
+
 .hidden {
     display: none;
 }
@@ -132,16 +145,4 @@ html {
 .option--selected {
     background: none rgba(0, 0, 0, .15);
     border-radius: .5rem;
-}
-
-.pomodoro--bg {
-    background: var(--tomato);
-}
-
-.short-break--bg {
-    background: blue;
-}
-
-.long-break--bg {
-    background: blueviolet;
 }
