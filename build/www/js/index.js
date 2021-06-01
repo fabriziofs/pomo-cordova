@@ -19,6 +19,8 @@ let app = {
         this.receivedEvent();
     },
     receivedEvent: function () {
+        // Click en la opcion por defecto al momento de cargar la pagina
+        document.getElementById('option_pomodoro').click();
         countdown_button.addEventListener('click', this.checkCountdown.bind(this));
         forward_button.addEventListener('click', this.stopCountdown.bind(this));
     },
@@ -33,8 +35,7 @@ let app = {
     startCountdown: function () {
         if (countdown_button.classList.contains('stopped')) {
             this.clearCountdown();
-            pomo_minutes = 1;
-            pomo_seconds = 0;
+            this.updateStatusToSelectedOption();
         }
         countdown_button.classList.add('started');
         forward_button.classList.remove('hidden');
@@ -44,11 +45,11 @@ let app = {
             countdown_button.classList.remove('paused');
         }
 
-
         function counter() {
             if (parseInt(pomo_seconds) === 0) {
                 if (parseInt(pomo_minutes) === 0) {
                     app.clearCountdown();
+                    app.updateStatusToSelectedOption();
                     return;
                 }
                 pomo_minutes -= 1;
@@ -70,7 +71,6 @@ let app = {
         countdown_button.classList.add('stopped');
         pomo_minutes = 0;
         pomo_seconds = 0;
-
         this.printCountdownNumbers(pomo_minutes, pomo_seconds);
         countdown_button.innerHTML = 'Comenzar';
     },
@@ -84,7 +84,18 @@ let app = {
         let option_selected = document.getElementById(option_id);
         option_selected.classList.add('option--selected');
     },
+    updateStatusToSelectedOption: function () {
+        let options = countdown_menu.getElementsByTagName('button');
+        let option_selected;
+        for (let option of options) {
+            if(option.classList.contains('option--selected')){
+                option_selected = option;
+            }
+        }
+        option_selected.click();
+    },
 
+    // Funciones auxiliares
     changeBackground: function (option_id) {
         switch (option_id) {
             case 'option_pomodoro':
