@@ -18,9 +18,9 @@ html {
     color: var(--white);
 }
 
-.app-wrapper {
-    width: 100%;
-    height: 100vh;
+body {
+    width: 100vw;
+    min-height: 100vh;
     background-color: var(--pomo-color);
     -webkit-transition: background-color 1s ease-out;
     -moz-transition: background-color 1s ease-out;
@@ -137,7 +137,6 @@ html {
 }
 
 /* ESTILOS AUXILIARES PARA CAMBIOS DE ESTADO */
-
 .hidden {
     display: none;
 }
