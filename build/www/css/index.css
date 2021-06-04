@@ -28,6 +28,11 @@ body {
     transition: background-color 1s ease-out;
 }
 
+.app_wrapper {
+    max-width: 85rem;
+    margin: 0 auto;
+}
+
 .header {
     padding: 5%;
     display: flex;
@@ -43,11 +48,11 @@ body {
 
 .logo__icon {
     border-radius: .5rem;
-    width: 1.6rem;
+    width: clamp(2.0rem, 4vw, 4.0rem);
 }
 
 .logo__text {
-    font: 700 2.0rem var(--font);
+    font: 700 clamp(2.0rem, 4vw, 4.0rem) var(--font);
     text-transform: capitalize;
     text-align: center;
     text-decoration: none;
@@ -68,7 +73,7 @@ body {
 }
 
 .navbar__button img {
-    width: 1.8rem;
+    width: clamp(2.0rem, 4vw, 4.0rem);
 }
 
 .line-separator {
@@ -78,8 +83,8 @@ body {
 }
 
 .countdown-wrapper {
-    margin: 5%;
-    padding: 5%;
+    margin: min(3.2rem, 5%);
+    padding: min(3.2rem, 5%);
     border-radius: 5px;
     background-color: rgba(255, 255, 255, 0.2);
 }
@@ -91,9 +96,9 @@ body {
 }
 
 .countdown-menu__selector {
-    padding-block: 0;
-    padding-inline: 1.2rem;
-    font: 500 1.6rem var(--font);
+    padding-block: .5em;
+    padding-inline: .8em;
+    font: 500 clamp(1.6rem, 5vw, 3.2rem) var(--font);
     background: transparent;
     border: 0 solid transparent;
     color: white;
@@ -101,7 +106,7 @@ body {
 
 .countdown__number {
     text-align: center;
-    font: 500 7.5rem var(--font);
+    font: 500 clamp(7.5rem, 20vw, 20rem) var(--font);
 }
 
 .countdown-controller {
@@ -112,13 +117,12 @@ body {
 }
 
 .countdown-controller__button {
-    max-width: 20rem;
     padding: 1em;
     border: none;
     border-radius: 5px;
     color: var(--pomo-color);
     text-transform: uppercase;
-    font-size: 2.2rem;
+    font-size: clamp(2.2rem, 5vw, 4.4rem);
     font-weight: bold;
     -webkit-transition: color 1s ease-out;
     -moz-transition: color 1s ease-out;
