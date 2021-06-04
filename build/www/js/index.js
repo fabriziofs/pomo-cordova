@@ -117,7 +117,7 @@ let app = {
             case 'option_long-break':
                 this.clearCountdown();
                 this.changeAppColor('--long-break-color');
-                pomo_minutes = 10;
+                pomo_minutes = 20;
                 pomo_seconds = 0;
                 this.printCountdownNumbers(pomo_minutes, pomo_seconds);
                 break;
