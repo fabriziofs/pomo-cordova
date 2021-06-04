@@ -8,9 +8,9 @@
     --font: 'M PLUS Rounded 1c', sans-serif;
     --tomato: #F95959;
     --white: #FFFFFF;
-    --pomo-color: #2980B9;
+    --pomo-color: #F1C40F;
     --short-break-color: #F95959;
-    --long-break-color: #BDC3C7;
+    --long-break-color: #2980B9;
 }
 
 html {
@@ -28,6 +28,9 @@ body {
     transition: background-color 1s ease-out;
 }
 
+button {
+    cursor: pointer;
+}
 .app_wrapper {
     max-width: 85rem;
     margin: 0 auto;
