@@ -1,193 +1,194 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 :root {
-    --font: 'M PLUS Rounded 1c', sans-serif;
-    --tomato: #F95959;
-    --grey: #3C3C3C;
-    --light-grey: #D8D8D8;
-    --white: #FFFFFF;
-    --pomo-color: #F1C40F;
-    --short-break-color: #F95959;
-    --long-break-color: #2980B9;
+  --font: 'M PLUS Rounded 1c', sans-serif;
+  --tomato: #F95959;
+  --grey: #3C3C3C;
+  --light-grey: #D8D8D8;
+  --white: #FFFFFF;
+  --pomo-color: #F1C40F;
+  --short-break-color: #F95959;
+  --long-break-color: #2980B9;
 }
 
 html {
-    font-size: 62.5%;
-    color: var(--white);
+  font-size: 62.5%;
+  color: var(--white);
 }
 
 body {
-    width: 100%;
-    background-color: var(--pomo-color);
-    -webkit-transition: background-color 1s ease-out;
-    -moz-transition: background-color 1s ease-out;
-    -o-transition: background-color 1s ease-out;
-    transition: background-color 1s ease-out;
+  width: 100%;
+  background-color: var(--pomo-color);
+  -webkit-transition: background-color 1s ease-out;
+  -moz-transition: background-color 1s ease-out;
+  -o-transition: background-color 1s ease-out;
+  transition: background-color 1s ease-out;
 }
 
 button {
-    cursor: pointer;
+  cursor: pointer;
 }
+
 .app_wrapper {
-    max-width: 85rem;
-    margin: 0 auto;
+  max-width: 85rem;
+  margin: 0 auto;
 }
 
 .header {
-    padding: 5%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  padding-inline: 5%;
+  padding-block: 2%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .logo {
-    display: flex;
-    align-items: center;
-    gap: .2rem;
+  display: flex;
+  align-items: center;
+  gap: .2rem;
 }
 
 .logo__icon {
-    border-radius: .5rem;
-    width: clamp(2.0rem, 4vw, 4.0rem);
+  border-radius: .5rem;
+  width: clamp(2.0rem, 3vw, 3.2rem);
 }
 
 .logo__text {
-    font: 700 clamp(2.0rem, 4vw, 4.0rem) var(--font);
-    color: var(--white);
-    text-transform: capitalize;
-    text-align: center;
-    text-decoration: none;
+  font: 700 clamp(2rem, 3vw, 3.2rem) var(--font);
+  color: var(--white);
+  text-transform: capitalize;
+  text-align: center;
+  text-decoration: none;
 }
 
 .navbar {
-    display: flex;
-    gap: .5rem;
+  display: flex;
+  gap: .5rem;
 }
 
 .navbar__button {
-    display: flex;
-    align-items: center;
-    border: none;
-    padding: .8rem;
-    border-radius: .5rem;
-    background-color: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  border: none;
+  padding: .8rem;
+  border-radius: .5rem;
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .navbar__button img {
-    width: clamp(2.0rem, 4vw, 4.0rem);
+  width: clamp(2rem, 3vw, 3.2rem);
 }
 
 .line-separator {
-    margin-block-end: 4rem;
-    height: .1rem;
-    background-color: rgba(0, 0, 0, 0.1);
+  margin-block-end: 4rem;
+  height: .1rem;
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .countdown-wrapper {
-    margin: min(3.2rem, 5%);
-    padding: min(3.2rem, 5%);
-    border-radius: 5px;
-    background-color: rgba(255, 255, 255, 0.2);
+  margin: min(3.2rem, 5%);
+  padding: min(3.2rem, 5%);
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .countdown-menu {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .countdown-menu__selector {
-    padding-block: .5em;
-    padding-inline: .8em;
-    font: 500 clamp(1.6rem, 5vw, 3.2rem) var(--font);
-    background: transparent;
-    border: 0 solid transparent;
-    color: var(--white);
+  padding-block: .4em;
+  padding-inline: .6em;
+  font: 500 clamp(1.6rem, 4vw, 3.2rem) var(--font);
+  background: transparent;
+  border: 0 solid transparent;
+  color: var(--white);
 }
 
 .countdown__number {
-    text-align: center;
-    font: 500 clamp(7.5rem, 20vw, 20rem) var(--font);
-    color: var(--white);
+  text-align: center;
+  font: bold clamp(7.5rem, 20vw, 12rem) var(--font);
+  color: var(--white);
 }
 
 .countdown-controller {
-    margin-block: 5%;
-    margin-inline: 0;
-    display: flex;
-    justify-content: center;
+  margin-block: 2%;
+  margin-inline: 0;
+  display: flex;
+  justify-content: center;
 }
 
 .countdown-controller__button {
-    padding: 1em;
-    border: none;
-    border-radius: 5px;
-    color: var(--pomo-color);
-    text-transform: uppercase;
-    font-size: clamp(2.2rem, 5vw, 4.4rem);
-    font-weight: bold;
-    -webkit-transition: color 1s ease-out;
-    -moz-transition: color 1s ease-out;
-    -o-transition: color 1s ease-out;
-    transition: color 1s ease-out;
+  padding: .8em;
+  border: none;
+  border-radius: .8rem;
+  color: var(--pomo-color);
+  text-transform: uppercase;
+  font-size: clamp(2.2rem, 4vw, 4.2rem);
+  font-weight: bold;
+  -webkit-transition: color 1s ease-out;
+  -moz-transition: color 1s ease-out;
+  -o-transition: color 1s ease-out;
+  transition: color 1s ease-out;
 }
 
 .countdown-controller__forward {
-    max-width: 19rem;
-    background: transparent;
-    border: none;
+  max-width: 19rem;
+  background: transparent;
+  border: none;
 }
 
 .countdown-controller__forward-img {
-    width: min(30%, 4.8rem);
+  width: min(30%, 4.8rem);
 }
 
 /* ESTILOS AUXILIARES PARA CAMBIOS DE ESTADO */
 .hidden {
-    display: none;
+  display: none;
 }
 
 .option--selected {
-    background: none rgba(0, 0, 0, .15);
-    border-radius: .5rem;
+  background: none rgba(0, 0, 0, .15);
+  border-radius: .5rem;
 }
-
 
 
 /* ESTILOS PARA EL BOTON DE AJUSTES */
 
 .settings_title {
-    font: 500 1.8rem var(--font);
-    color: var(--grey);
+  font: 500 2rem var(--font);
+  color: var(--grey);
 }
 
 .time_settings {
-    display: flex;
-    justify-content: space-evenly;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .option_time {
-    width: 9rem;
-    display: flex;
-    flex-direction: column;
+  width: 9rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .time_label {
-    text-align: center;
-    font: 500 1.4rem var(--font);
+  text-align: center;
+  font: 500 1.4rem var(--font);
 }
 
 .time_input {
-    width:100%;
-    font-size: 1.4rem;
-    padding: .2em;
-    background-color: var(--light-grey);
-    border: none;
-    border-radius: .5rem;
-    box-shadow: none;
+  width: 100%;
+  font-size: 1.4rem;
+  padding: .2em;
+  background-color: var(--light-grey);
+  border: none;
+  border-radius: .5rem;
+  box-shadow: none;
 
 }
