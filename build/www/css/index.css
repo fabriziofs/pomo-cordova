@@ -56,6 +56,7 @@ button {
 
 .logo__text {
     font: 700 clamp(2.0rem, 4vw, 4.0rem) var(--font);
+    color: var(--white);
     text-transform: capitalize;
     text-align: center;
     text-decoration: none;
@@ -110,6 +111,7 @@ button {
 .countdown__number {
     text-align: center;
     font: 500 clamp(7.5rem, 20vw, 20rem) var(--font);
+    color: var(--white);
 }
 
 .countdown-controller {
