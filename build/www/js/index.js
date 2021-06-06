@@ -101,12 +101,15 @@ let app = {
             // LLamadas desde menu de opciones
             case 'option_pomodoro':
                 input_minute = parseInt(document.getElementById('pomodoro_time').value);
+                input_minute = this.checkCustomMinutes(input_minute);
                 return input_minute;
             case 'option_short-break':
                 input_minute = parseInt(document.getElementById('short-break_time').value);
+                input_minute = this.checkCustomMinutes(input_minute);
                 return input_minute;
             case 'option_long-break':
                 input_minute = parseInt(document.getElementById('long-break_time').value);
+                input_minute = this.checkCustomMinutes(input_minute);
                 return input_minute;
             // LLamadas al cambiar los valores en los ajustes
             case 'pomodoro_time':
