@@ -89,11 +89,45 @@ let app = {
         let options = countdown_menu.getElementsByClassName('countdown-menu__selector');
         let option_selected;
         for (let option of options) {
-            if(option.classList.contains('option--selected')){
+            if (option.classList.contains('option--selected')) {
                 option_selected = option;
             }
         }
         option_selected.click();
+    },
+    customSessionTimes: function (option_id) {
+        let input_minute;
+        switch (option_id) {
+            // LLamadas desde menu de opciones
+            case 'option_pomodoro':
+                input_minute = parseInt(document.getElementById('pomodoro_time').value);
+                return input_minute;
+            case 'option_short-break':
+                input_minute = parseInt(document.getElementById('short-break_time').value);
+                return input_minute;
+            case 'option_long-break':
+                input_minute = parseInt(document.getElementById('long-break_time').value);
+                return input_minute;
+            // LLamadas al cambiar los valores en los ajustes
+            case 'pomodoro_time':
+                input_minute = parseInt(document.getElementById(option_id).value);
+                pomo_minutes = this.checkCustomMinutes(input_minute);
+                pomo_seconds = 0;
+                this.printCountdownNumbers(pomo_minutes, pomo_seconds);
+                break;
+            case 'short-break_time':
+                input_minute = parseInt(document.getElementById(option_id).value);
+                pomo_minutes = this.checkCustomMinutes(input_minute);
+                pomo_seconds = 0;
+                this.printCountdownNumbers(pomo_minutes, pomo_seconds);
+                break;
+            case 'long-break_time':
+                input_minute = parseInt(document.getElementById(option_id).value);
+                pomo_minutes = this.checkCustomMinutes(input_minute);
+                pomo_seconds = 0;
+                this.printCountdownNumbers(pomo_minutes, pomo_seconds);
+                break;
+        }
     },
 
     // Funciones auxiliares
@@ -102,7 +136,7 @@ let app = {
             case 'option_pomodoro':
                 this.clearCountdown();
                 this.changeAppColor('--pomo-color');
-                pomo_minutes = 25;
+                pomo_minutes = this.customSessionTimes(option_id);
                 pomo_seconds = 0;
                 this.printCountdownNumbers(pomo_minutes, pomo_seconds);
                 break;
@@ -110,7 +144,7 @@ let app = {
             case 'option_short-break':
                 this.clearCountdown();
                 this.changeAppColor('--short-break-color');
-                pomo_minutes = 5;
+                pomo_minutes = this.customSessionTimes(option_id);
                 pomo_seconds = 0;
                 this.printCountdownNumbers(pomo_minutes, pomo_seconds);
                 break;
@@ -118,7 +152,7 @@ let app = {
             case 'option_long-break':
                 this.clearCountdown();
                 this.changeAppColor('--long-break-color');
-                pomo_minutes = 20;
+                pomo_minutes = this.customSessionTimes(option_id);
                 pomo_seconds = 0;
                 this.printCountdownNumbers(pomo_minutes, pomo_seconds);
                 break;
@@ -129,16 +163,24 @@ let app = {
         pomo_seconds = parseInt(pomo_seconds).toLocaleString(undefined, {minimumIntegerDigits: 2, useGrouping: false});
         countdown_number.innerHTML = `${pomo_minutes}:${pomo_seconds}`;
     },
-    clearCountdown: function() {
+    clearCountdown: function () {
         clearInterval(interval);
         countdown_button.className = 'countdown-controller__button';
         forward_button.classList.add('hidden');
         countdown_button.innerHTML = 'Comenzar';
     },
-    changeAppColor: function(css_variable) {
+    changeAppColor: function (css_variable) {
         let main_color = getComputedStyle(document.documentElement).getPropertyValue(css_variable);
-        app_wrapper.style.setProperty( 'background-color', main_color);
+        app_wrapper.style.setProperty('background-color', main_color);
         countdown_button.style.setProperty('color', main_color);
+    },
+    checkCustomMinutes: function (input_minute) {
+        if (isNaN(input_minute)) {
+            pomo_minutes = 0;
+        } else {
+            pomo_minutes = input_minute;
+        }
+        return pomo_minutes;
     }
 };
 

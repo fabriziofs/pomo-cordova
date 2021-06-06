@@ -55,15 +55,27 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <h5 class="settings_title" id="exampleModalLabel">Ajustes</h5>
           <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
         </div>
         <div class="modal-body">
-          ...
+          <div class="time_settings">
+            <div class="option_time">
+              <label class="time_label" for="pomodoro_time">Pomodoro</label>
+              <input class="time_input" id="pomodoro_time" min="1" step="1" value="25" type="number" oninput="app.customSessionTimes(this.id)">
+            </div>
+            <div class="option_time">
+              <label class="time_label" for="short-break_time">Pausa Corta</label>
+              <input class="time_input" id="short-break_time" min="1" step="1" value="5" type="number" oninput="app.customSessionTimes(this.id)">
+            </div>
+            <div class="option_time">
+              <label class="time_label" for="long-break_time">Pausa Larga</label>
+              <input class="time_input" id="long-break_time" min="1" step="1" value="20" type="number" oninput="app.customSessionTimes(this.id)">
+            </div>
+          </div>
         </div>
         <div class="modal-footer">
           <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Close</button>
-          <button class="btn btn-primary" type="button">Save changes</button>
         </div>
       </div>
     </div>

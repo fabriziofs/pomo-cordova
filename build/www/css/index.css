@@ -7,6 +7,8 @@
 :root {
     --font: 'M PLUS Rounded 1c', sans-serif;
     --tomato: #F95959;
+    --grey: #3C3C3C;
+    --light-grey: #D8D8D8;
     --white: #FFFFFF;
     --pomo-color: #F1C40F;
     --short-break-color: #F95959;
@@ -105,7 +107,7 @@ button {
     font: 500 clamp(1.6rem, 5vw, 3.2rem) var(--font);
     background: transparent;
     border: 0 solid transparent;
-    color: white;
+    color: var(--white);
 }
 
 .countdown__number {
@@ -153,4 +155,40 @@ button {
 .option--selected {
     background: none rgba(0, 0, 0, .15);
     border-radius: .5rem;
+}
+
+
+
+/* ESTILOS PARA EL BOTON DE AJUSTES */
+
+.settings_title {
+    font: 500 1.8rem var(--font);
+    color: var(--grey);
+}
+
+.time_settings {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.option_time {
+    width: 9rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.time_label {
+    text-align: center;
+    font: 500 1.4rem var(--font);
+}
+
+.time_input {
+    width:100%;
+    font-size: 1.4rem;
+    padding: .2em;
+    background-color: var(--light-grey);
+    border: none;
+    border-radius: .5rem;
+    box-shadow: none;
+
 }
