@@ -73,6 +73,7 @@ let app = {
         pomo_seconds = 0;
         this.printCountdownNumbers(pomo_minutes, pomo_seconds);
         countdown_button.innerHTML = 'Comenzar';
+        this.updateStatusToSelectedOption();
     },
 
     selectSessionOption: function (option_id) {
@@ -85,7 +86,7 @@ let app = {
         option_selected.classList.add('option--selected');
     },
     updateStatusToSelectedOption: function () {
-        let options = countdown_menu.getElementsByTagName('button');
+        let options = countdown_menu.getElementsByClassName('countdown-menu__selector');
         let option_selected;
         for (let option of options) {
             if(option.classList.contains('option--selected')){
