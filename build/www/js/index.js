@@ -4,7 +4,7 @@ let forward_button = document.getElementById('forward_button');
 let countdown_number = document.getElementById('countdown_number');
 let countdown_menu = document.getElementById('countdown_menu');
 let app_wrapper = document.getElementById('app_wrapper');
-
+var bellSound = new Audio('audio/one_bell.mp3');
 let pomo_minutes = 1;
 let pomo_seconds = 0;
 let app = {
@@ -30,6 +30,7 @@ let app = {
             this.pauseCountdown();
         } else {
             this.startCountdown();
+            
         }
     },
     startCountdown: function () {
@@ -50,6 +51,7 @@ let app = {
                 if (parseInt(pomo_minutes) === 0) {
                     app.clearCountdown();
                     app.updateStatusToSelectedOption();
+                    bellSound.play();
                     return;
                 }
                 pomo_minutes -= 1;
@@ -184,7 +186,8 @@ let app = {
             pomo_minutes = input_minute;
         }
         return pomo_minutes;
-    }
+    },
+	
 };
 
 app.initialize();
