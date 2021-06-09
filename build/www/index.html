@@ -1,166 +1,103 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <link href="https://fonts.gstatic.com" rel="preconnect" />
-    <link
+<head>
+  <meta charset="UTF-8"/>
+  <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <link href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link
       href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700&display=swap"
       rel="stylesheet"
-    />
-    <link href="./css/index.css" rel="stylesheet" />
-    <link
+  />
+  <link href="./css/index.css" rel="stylesheet"/>
+  <link
       crossorigin="anonymous"
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
       integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
       rel="stylesheet"
-    />
-    <title>PomoCordova</title>
-  </head>
-  <body id="app_wrapper">
-    <div class="app_wrapper">
-      <header class="header">
-        <h1 class="logo">
-          <img alt="Tomato icon" class="logo__icon" src="assets/tomato.svg" />
-          <span class="logo__text">Pomocordova</span>
-        </h1>
-        <nav class="navbar">
-          <button
-            class="navbar__button"
-            data-bs-target="#settingsModal"
-            data-bs-toggle="modal"
-            id="settings_button"
-          >
-            <img alt="ajustes" src="./assets/settings.svg" />
-          </button>
-        </nav>
-      </header>
-      <div class="line-separator"></div>
-      <main class="countdown-wrapper">
-        <div class="countdown">
-          <div class="countdown-menu" id="countdown_menu">
-            <button
-              class="countdown-menu__selector"
-              id="option_pomodoro"
-              onclick="app.selectSessionOption(this.id)"
-            >
-              Pomodoro
-            </button>
-            <button
-              class="countdown-menu__selector"
-              id="option_short-break"
-              onclick="app.selectSessionOption(this.id)"
-            >
-              Pausa Corta
-            </button>
-            <button
-              class="countdown-menu__selector"
-              id="option_long-break"
-              onclick="app.selectSessionOption(this.id)"
-            >
-              Pausa Larga
-            </button>
-          </div>
-          <div class="countdown__number" id="countdown_number">00:00</div>
-          <div class="countdown-controller">
-            <button class="countdown-controller__button" id="countdown_button">
-              Comenzar
-            </button>
-            <button
-              class="countdown-controller__forward hidden"
-              id="forward_button"
-            >
-              <img
-                alt="forward icon"
-                class="countdown-controller__forward-img"
-                id="forward_image"
-                src="./assets/forward-button.svg"
+  />
+  <title>PomoCordova</title>
+</head>
+<body id="app_wrapper">
+<div class="app_wrapper">
+  <header class="header">
+    <h1 class="logo">
+      <img alt="Tomato icon" class="logo__icon" src="assets/tomato.svg"/>
+      <span class="logo__text">Pomocordova</span>
+    </h1>
+    <nav class="navbar">
+      <button class="navbar__button" data-bs-target="#settingsModal" data-bs-toggle="modal" id="settings_button">
+        <img alt="ajustes" src="./assets/settings.svg"/>
+      </button>
+    </nav>
+  </header>
+  <div class="line-separator"></div>
+  <main class="countdown-wrapper">
+    <div class="countdown">
+      <div class="countdown-menu" id="countdown_menu">
+        <button class="countdown-menu__selector" id="option_pomodoro" onclick="app.selectSessionOption(this.id)">
+          Pomodoro
+        </button>
+        <button class="countdown-menu__selector" id="option_short-break" onclick="app.selectSessionOption(this.id)">
+          Pausa Corta
+        </button>
+        <button class="countdown-menu__selector" id="option_long-break" onclick="app.selectSessionOption(this.id)">
+          Pausa Larga
+        </button>
+      </div>
+      <div class="countdown__number" id="countdown_number">00:00</div>
+      <div class="countdown-controller">
+        <button class="countdown-controller__button" id="countdown_button">
+          Comenzar
+        </button>
+        <button class="countdown-controller__forward hidden" id="forward_button">
+          <img alt="forward icon" class="countdown-controller__forward-img" id="forward_image"
+               src="./assets/forward-button.svg"/>
+        </button>
+      </div>
+    </div>
+  </main>
+  <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="settingsModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="settings_title" id="exampleModalLabel">Ajustes</h5>
+          <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+        </div>
+        <div class="modal-body">
+          <div class="time_settings">
+            <div class="option_time">
+              <label class="time_label" for="pomodoro_time">Pomodoro</label>
+              <input class="time_input" id="pomodoro_time" min="1" oninput="app.customSessionTimes(this.id)" step="1"
+                     type="number" value="25"
               />
-            </button>
+            </div>
+            <div class="option_time">
+              <label class="time_label" for="short-break_time">Pausa Corta</label>
+              <input class="time_input" id="short-break_time" min="1" oninput="app.customSessionTimes(this.id)" step="1"
+                     type="number" value="5"/>
+            </div>
+            <div class="option_time">
+              <label class="time_label" for="long-break_time">Pausa Larga</label>
+              <input class="time_input" id="long-break_time" min="1" oninput="app.customSessionTimes(this.id)" step="1"
+                     type="number" value="20"/>
+            </div>
           </div>
         </div>
-      </main>
-      <div
-        aria-hidden="true"
-        aria-labelledby="exampleModalLabel"
-        class="modal fade"
-        id="settingsModal"
-        tabindex="-1"
-      >
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="settings_title" id="exampleModalLabel">Ajustes</h5>
-              <button
-                aria-label="Close"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                type="button"
-              ></button>
-            </div>
-            <div class="modal-body">
-              <div class="time_settings">
-                <div class="option_time">
-                  <label class="time_label" for="pomodoro_time">Pomodoro</label>
-                  <input
-                    class="time_input"
-                    id="pomodoro_time"
-                    min="1"
-                    step="1"
-                    value="25"
-                    type="number"
-                    oninput="app.customSessionTimes(this.id)"
-                  />
-                </div>
-                <div class="option_time">
-                  <label class="time_label" for="short-break_time"
-                    >Pausa Corta</label
-                  >
-                  <input
-                    class="time_input"
-                    id="short-break_time"
-                    min="1"
-                    step="1"
-                    value="5"
-                    type="number"
-                    oninput="app.customSessionTimes(this.id)"
-                  />
-                </div>
-                <div class="option_time">
-                  <label class="time_label" for="long-break_time"
-                    >Pausa Larga</label
-                  >
-                  <input
-                    class="time_input"
-                    id="long-break_time"
-                    min="1"
-                    step="1"
-                    value="20"
-                    type="number"
-                    oninput="app.customSessionTimes(this.id)"
-                  />
-                </div>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-                type="button"
-              >
-                Close
-              </button>
-            </div>
-          </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">
+            Close
+          </button>
         </div>
       </div>
     </div>
-    <script
-      crossorigin="anonymous"
-      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-    ></script>
-    <script src="./js/index.js"></script>
-  </body>
+  </div>
+</div>
+<script
+    crossorigin="anonymous"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+></script>
+<script src="./js/index.js"></script>
+</body>
 </html>
